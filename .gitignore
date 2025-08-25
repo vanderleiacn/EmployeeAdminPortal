@@ -1,0 +1,41 @@
+# Build Folders
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.vcxproj.user
+
+# Rider
+.idea/
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET
+wwwroot/lib/
+
+# Logs
+*.log
+logs/
+*.tlog
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Others
+*.DS_Store
+*.bak
+*.backup
+*.swp
