@@ -1,41 +1,14 @@
-# Build Folders
+# Backend (.NET)
 bin/
 obj/
-out/
-
-# Visual Studio
-.vs/
-*.suo
 *.user
-*.userosscache
-*.sln.docstates
-*.vcxproj.user
+*.suo
+*.vs/
 
-# Rider
-.idea/
+# Frontend (React/Node)
+node_modules/
+build/
+.env
 
-# NuGet
-*.nupkg
-packages/
-*.snupkg
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-# ASP.NET
-wwwroot/lib/
-
-# Logs
-*.log
-logs/
-*.tlog
-
-# Windows
-Thumbs.db
-Desktop.ini
-
-# Others
-*.DS_Store
-*.bak
-*.backup
-*.swp
+# GitHub Actions
+.github/
