@@ -1,10 +1,10 @@
 import axios from "axios";
+import "./ProductList.css"; // importa o CSS
 
 export default function ProductList({ products, setEditingProduct, fetchProducts }) {
-  const API_URL = "https://localhost:7266/api/products"; // Ajuste para porta do backend (HTTPS)
+  const API_URL = "https://localhost:7266/api/products";
 
   const handleDelete = async (id) => {
-    if (!window.confirm("Tem certeza que deseja excluir este produto?")) return;
     try {
       await axios.delete(`${API_URL}/${id}`);
       fetchProducts();
@@ -14,33 +14,35 @@ export default function ProductList({ products, setEditingProduct, fetchProducts
     }
   };
 
-  if (!products || products.length === 0) return <p>Nenhum produto encontrado.</p>;
-
   return (
-    <table style={{ width: "100%", borderCollapse: "collapse" }}>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Preço</th>
-          <th>Descrição</th>
-          <th>Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {products.map((p) => (
-          <tr key={p.id}>
-            <td>{p.name}</td>
-            <td>R$ {p.price.toFixed(2)}</td>
-            <td>{p.description}</td>
-            <td>
-              <button onClick={() => setEditingProduct(p)}>Editar</button>
-              <button onClick={() => handleDelete(p.id)} style={{ marginLeft: "10px" }}>
-                Excluir
-              </button>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <div className="table-container">
+      {(!products || products.length === 0) ? (
+        <p className="empty">Nenhum produto encontrado.</p>
+      ) : (
+        <table className="product-table">
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Descrição</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((p) => (
+              <tr key={p.id}>
+                <td>{p.name}</td>
+                <td>R$ {p.price}</td>
+                <td>{p.description}</td>
+                <td>
+                  <button className="btn-edit" onClick={() => setEditingProduct(p)}>Editar</button>
+                  <button className="btn-delete" onClick={() => handleDelete(p.id)}>Excluir</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+    </div>
   );
 }

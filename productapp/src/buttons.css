@@ -1,0 +1,45 @@
+/* Botão padrão */
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Botão Adicionar / Atualizar */
+.btn-submit {
+  background-color: #007bff; /* azul */
+  color: #fff;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+/* Botão Editar */
+.btn-edit {
+  background-color: #4da6ff; /* azul claro */
+  color: #fff;
+  margin-right: 8px; /* espaço entre editar e excluir */
+}
+
+.btn-edit:hover {
+  background-color: #1e90ff;
+}
+
+/* Botão Excluir */
+.btn-delete {
+  background-color: #ff4d4d; /* vermelho */
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #e60000;
+}
