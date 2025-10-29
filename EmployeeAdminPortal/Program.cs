@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//  Força a URL fixa (https 7266)
+// Força a URL fixa (https 7266)
 builder.WebHost.UseUrls("https://localhost:7266");
 
 // Adiciona o DbContext ao container de serviços
@@ -15,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configuração de CORS (desenvolvimento)
+// Configuração de CORS (permitindo tudo para desenvolvimento)
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -26,29 +26,24 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Pipeline HTTP
-if (app.Environment.IsDevelopment())
+// Mostra o ambiente atual no console (para debug)
+Console.WriteLine($"Environment: {app.Environment.EnvironmentName}");
+
+// Sempre habilita Swagger (independente do ambiente)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "EmployeeAdminPortal API V1");
+    c.RoutePrefix = "swagger"; // acessível em https://localhost:7266/swagger
+});
 
-    // Swagger abre direto em https://localhost:7266/
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "EmployeeAdminPortal API V1");
-        c.RoutePrefix = string.Empty; // raiz
-    });
+// Habilita CORS
+app.UseCors("AllowAll");
 
-    // CORS para dev
-    app.UseCors("AllowAll");
-}
-else
-{
-    app.UseExceptionHandler("/Home/Error");
-    app.UseHsts();
-}
-
+// Configurações comuns do pipeline HTTP
 app.UseHttpsRedirection();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

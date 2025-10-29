@@ -1,48 +1,23 @@
 ﻿{
-  {
-    "$schema": "http://json.schemastore.org/launchsettings.json",
-    "profiles": {
-      "https": {
-        "commandName": "Project",
-        "dotnetRunMessages": true,
-        "launchBrowser": true,
-        "launchUrl": "/",
-        "applicationUrl": "https://localhost:7266",
-        "environmentVariables": {
-          "ASPNETCORE_ENVIRONMENT": "Development"
-        }
-      }
-    }
-  },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "/",
-      "applicationUrl": "https://localhost:7266",
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7266;http://localhost:5020",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
-  },
-  "https": {
-    "commandName": "Project",
-    "dotnetRunMessages": true,
-    "launchBrowser": true,
-    "launchUrl": "/",
-    "applicationUrl": "https://localhost:7266;http://localhost:5020",
-    "environmentVariables": {
-      "ASPNETCORE_ENVIRONMENT": "Development"
-    }
-  },
-  "IIS Express": {
-    "commandName": "IISExpress",
-    "launchBrowser": true,
-    "launchUrl": "/",
-    "environmentVariables": {
-      "ASPNETCORE_ENVIRONMENT": "Development"
-    }
   }
-}
 }
